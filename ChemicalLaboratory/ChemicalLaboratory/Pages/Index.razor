@@ -1,0 +1,73 @@
+﻿@page "/"
+@using Data;
+@inject CurrentUser currentUser;
+@inject NavigationManager navigation;
+
+<PageTitle>Index</PageTitle>
+
+<div style="mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
+    <div style="position:relative; mix-blend-mode: normal; align-items: inherit; background-image: url('/images/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 50px; height: 75px">
+        
+    </div>
+    <div style=" mix-blend-mode: normal;  position: absolute; left: 50%; transform: translate(-50%, 30%); ">
+        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 64px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+            ChemicalLab
+        </p>
+    </div>
+    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; mix-blend-mode: normal; position: absolute; left: 52%; transform: translate(-48%, 25%); background-color: rgba(0, 0, 0, 0.2);width: 28%; align-items: inherit; gap: 10px; padding-left: 10px; height: 350%; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
+    <div style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; mix-blend-mode: normal; position: absolute; left: 50%; transform: translate(-50%, 40%); background-color: rgba(104, 109, 238, 0.8); width: 28%; align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start">
+        <br />
+        <label style="text-align: left; font-family: Playfair Display; font-size: 28px; color: rgba(255, 255, 255, 1); width: 100%">
+            Логин
+        </label>
+        <input @bind-value="login" type="text" placeholder="Введите логин" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ; font-size: 20px; background-color: rgb(233, 231, 254);  width: 100%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
+        <br />
+        <br />
+        <label style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 28px; color: rgba(255, 255, 255, 1); font-weight: 400; width: 100%">
+            Пароль
+        </label>
+        <input @bind-value="password" type="password" placeholder="Введите пароль" style="box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; font-size:20px ;background-color: rgb(233, 231, 254);  width: 100%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
+        <br />
+        <br />
+        <br />
+        <button @onclick="Login" style=" width: 100%; mix-blend-mode: normal; align-items: inherit; border-radius: 15px">
+            <b style="letter-spacing: 0; text-transform: none; text-align: center; font-family: Playfair Display; font-size: 28px; color: rgba(104, 109, 238, 0.8)">
+                Войти
+            </b>
+        </button>
+    </div>
+</div>
+
+
+@code 
+{
+    string? login;
+    string? password;
+
+    public void Login()
+    {
+        if (login != null && password != null)
+        {
+            var user = DBConnection.FindUserByLogin(login);
+
+            if (user.Password == password)
+            {
+                currentUser.CurrentUserData = user;
+
+                switch (currentUser.CurrentUserData.RoleName)
+                {
+                    case "Администратор":
+                        navigation.NavigateTo("/admin");
+                        break;
+                    case "Лаборант":
+                        navigation.NavigateTo("/labWorker");
+                        break;
+                    case "Заведующий":
+                        navigation.NavigateTo("/labManager");
+                        break;
+                }
+            }
+        }
+    }
+}
+
