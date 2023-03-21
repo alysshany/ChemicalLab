@@ -2,6 +2,7 @@ using ChemicalLaboratory;
 using ChemicalLaboratory.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSingleton<DepositData>();
 builder.Services.AddSingleton<DefinedIndicatorData>();
 builder.Services.AddSingleton<MethodData>();
 builder.Services.AddSingleton<CurrentUser>();
+builder.WebHost.UseStaticWebAssets();
 
 var app = builder.Build();
 
@@ -28,7 +30,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-
 app.UseRouting();
 
 app.MapBlazorHub();

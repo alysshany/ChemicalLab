@@ -1,7 +1,7 @@
 ﻿using Microsoft.JSInterop;
 using System.Text.Json;
 
-namespace ServiceApp.Services
+namespace ChemicalLaboratory.Services
 {
     public class LocalStorageService : ILocalStorageService
     {

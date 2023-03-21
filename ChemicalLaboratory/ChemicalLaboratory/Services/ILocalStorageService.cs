@@ -1,4 +1,4 @@
-﻿namespace ServiceApp.Services
+﻿namespace ChemicalLaboratory.Services
 {
     public interface ILocalStorageService
     {

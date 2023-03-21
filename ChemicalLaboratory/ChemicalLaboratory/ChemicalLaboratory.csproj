@@ -7,9 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Extensions.Canvas" Version="1.1.1" />
     <PackageReference Include="MongoDB.Bson" Version="2.19.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
-    <PackageReference Include="Skclusive.Material.AppBar" Version="5.2.0" />
+    <PackageReference Include="Radzen.Blazor" Version="4.7.12" />
   </ItemGroup>
 
 </Project>

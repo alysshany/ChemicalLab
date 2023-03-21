@@ -62,8 +62,3 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
-
-@font-face {
-    font-family: 'Playfair';
-    src: url('C:\Users\Zilya\source\repos\ChemicalLaboratory\ChemicalLaboratory\wwwroot\font\PlayfairDisplay-VariableFont_wght.ttf'); 
-}

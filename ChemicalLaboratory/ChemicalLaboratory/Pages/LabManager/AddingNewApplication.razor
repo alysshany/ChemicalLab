@@ -47,6 +47,7 @@
                 Месторождение: 
             </label>
             <select @onchange = "DepositChange" name="deposit" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ; font-size: 20px; background-color: rgb(233, 231, 254);  width: 80%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
+                <option value="-">-</option>
                 @foreach (var dep in deposit)
                 {
                     <option value="@dep">@dep</option>
@@ -56,20 +57,15 @@
                 Определяемый показатель: 
             </label>
             <select @onchange = "IndicatorChange" name="indicator" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ; font-size: 20px; background-color: rgb(233, 231, 254);  width: 80%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
+                <option value="-">-</option>
                 @foreach (var indicator in indicators)
                 {
                     <option value="@indicator">@indicator</option>
                 }
             </select>
             <label style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
-                Метод: 
+                Метод: @method
             </label>
-            <select @onchange = "MethodChange" name="method" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ; font-size: 20px; background-color: rgb(233, 231, 254);  width: 80%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
-                @foreach (var method in methods)
-                {
-                    <option value="@method">@method</option>
-                }
-            </select>
         </div>
 
         <div style="flex: 45%; margin-top: 4%"></div>
@@ -97,8 +93,6 @@
 
     List<string> deposit;
     List<string> indicators;
-    List<string> methods;
-
     protected override void OnInitialized()
     {
         deposit = new List<string>()
@@ -111,16 +105,12 @@
             ""
         }; 
 
-        methods = new List<string>()
-        {
-            ""
-        }; 
     }
 
     public void AddingApplication()
     {
         //Проверка на наличие такоой заявки
-        if (title != null && type != null && indicator != null && method != null && depositActual != null)
+        if (title != null && indicator != "-" && depositActual != "-" && type != null && indicator != null && method != null && depositActual != null)
         {
             AnalyzeData newApplication = new AnalyzeData()
             {
@@ -149,14 +139,12 @@
 
                     indicators = definedIndicatorData.indicatorOfWater;
 
-                    methods = methodData.methodsWater;
                     break;
                 case "Нефть":
                     deposit = depositData.depositOfOil;
 
                     indicators = definedIndicatorData.indicatorOfOil;
 
-                    methods = methodData.methodsOil;
                     break;
 
             }
@@ -168,14 +156,16 @@
         if (e.Value is not null)
         {
             indicator = e.Value.ToString();
-        }
-    }
+            switch (type)
+            {
+                case "Вода":
+                    method = methodData.methodsWater[indicator];
+                    break;
+                case "Нефть":
+                    method = methodData.methodsOil[indicator];
+                    break;
 
-    public void MethodChange(ChangeEventArgs e)
-    {
-        if (e.Value is not null)
-        {
-            method = e.Value.ToString();
+            }
         }
     }
 
