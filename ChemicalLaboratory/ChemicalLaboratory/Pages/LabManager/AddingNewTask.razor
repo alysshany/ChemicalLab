@@ -1,8 +1,10 @@
 ﻿@page "/labManagerAddingTask"
 @using Data;
+@inject IJSRuntime JS;
+@inject Radzen.NotificationService NotificationService;
 @inject NavigationManager navigation;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Добавления задания на выполнение</PageTitle>
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
@@ -40,7 +42,7 @@
                 <option value="-">-</option>
                 @foreach (var worker in workers)
                 {
-                    <option value="@worker.Login">@worker.Surname</option>
+                    <option value="@worker.Login">@worker.Surname @worker.Name</option>
                 }
             </select>
         </div>
@@ -50,12 +52,6 @@
         <button @onclick="AddingTask" style="margin: 3%; position:absolute; bottom: 0; right: 0 ; width: 10%;  background-color: white; box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:20px">
             <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
                 Сохранить
-            </p>
-        </button>
-
-        <button style="margin: 3%; position:absolute; bottom: 0; right: 12% ; width: 10%;  background-color: white; box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:20px">
-            <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
-                Очистить
             </p>
         </button>
     </div>
@@ -95,6 +91,11 @@
 
             DBConnection.AddTaskToDataBase(newTask);
         }
+        else
+        {
+            ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
+            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
+        }
     }
 
     public void NavigationToAddingNewApplication()
@@ -110,5 +111,10 @@
     public void NavigationToViewAllAnalyzes()
     {
         navigation.NavigateTo("/labManagerViewAnalyzes");
+    }
+
+    void ShowNotification(Radzen.NotificationMessage message)
+    {
+        NotificationService.Notify(message);
     }
 }

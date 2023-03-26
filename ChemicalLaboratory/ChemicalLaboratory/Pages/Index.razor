@@ -1,9 +1,12 @@
 ﻿@page "/"
 @using Data;
+@inject IJSRuntime JS;
+@using Radzen.Blazor;
+@inject Radzen.NotificationService NotificationService;
 @inject CurrentUser currentUser;
 @inject NavigationManager navigation;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Авторизация</PageTitle>
 
 <div style="mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
     <div style="position:relative; mix-blend-mode: normal; align-items: inherit; background-image: url('/images/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 50px; height: 75px">
@@ -50,7 +53,7 @@
         {
             var user = DBConnection.FindUserByLogin(login);
 
-            if (user.Password == password)
+            if (user != null && user.Password == password)
             {
                 currentUser.CurrentUserData = user;
 
@@ -67,7 +70,22 @@
                         break;
                 }
             }
+            else
+            {
+                ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Пользователь с такими данными не существует.", Duration = 4000 });
+                //JS.InvokeVoidAsync("alert", "Пользователь с такими данными не существует.");
+            }
         }
+        else
+        {
+            ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Заполните все поля.", Duration = 4000 });
+            //JS.InvokeVoidAsync("alert", "Заполните все поля!");
+        }
+    }
+
+    void ShowNotification(Radzen.NotificationMessage message)
+    {
+        NotificationService.Notify(message);
     }
 }
 

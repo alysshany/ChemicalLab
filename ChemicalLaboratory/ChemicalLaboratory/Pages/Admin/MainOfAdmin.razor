@@ -3,7 +3,7 @@
 @inject NavigationManager navigation;
 @inject CurrentUser currentUser;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Домашняя страница администратора</PageTitle>
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
@@ -29,7 +29,6 @@
         <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
             Фамилия: @currentUser.CurrentUserData.Surname
         </p>
-
         <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
             Имя: @currentUser.CurrentUserData.Name
         </p>

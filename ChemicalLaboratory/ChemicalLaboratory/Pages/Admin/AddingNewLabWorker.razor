@@ -1,8 +1,11 @@
 ﻿@page "/adminAddingLabWorker"
 @using Data;
+@inject IJSRuntime JS;
+@inject Radzen.NotificationService NotificationService;
+@inject Radzen.DialogService DialogService;
 @inject NavigationManager navigation;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Добавление нового сотрудника</PageTitle>
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
@@ -85,12 +88,6 @@
                 Сохранить
             </p>
         </button>
-
-        <button @onclick="RemoveAll" style="margin: 3%; position:absolute; bottom: 0; right: 12% ; width: 10%;  background-color: white; box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:20px">
-            <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
-                Очистить
-            </p>
-        </button>
     </div>
 </div>
 
@@ -118,7 +115,7 @@
     {
         //Проверка на наличие такого сотрудника
         if (surname != null && name != null && birthday != null && login != null && 
-            password != null && telephone != null && email != null && role != null)
+            password != null && telephone != null && email != null && role != null && role != "-")
         {
             if (DBConnection.FindUserByLogin(login) == null)
             {
@@ -135,21 +132,20 @@
                     RoleName = role
                 };
                 DBConnection.AddToDataBase(userData);
+
+                DialogService.Alert("Сотрудник добавлен", "Сообщение", new Radzen.AlertOptions() { OkButtonText = "Yes" });
             }
             else
             {
-                
+                ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Пользователь с такими данными уже существует.", Duration = 4000 });
+                //JS.InvokeVoidAsync("alert", "Пользователь с такими данными уже существует.");
             }
         }
         else
         {
-            
+            ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все необходимые поля заполнены.", Duration = 4000 });
+            //JS.InvokeVoidAsync("alert", "Не все необходимые поля заполнены.");
         }
-    }
-
-    public void RemoveAll()
-    {
-       
     }
     
     public void NavigationToViewAllWorkers()
@@ -160,5 +156,10 @@
     public void NavigationToHomePage()
     {
         navigation.NavigateTo("/admin");
+    }
+
+    void ShowNotification(Radzen.NotificationMessage message)
+    {
+        NotificationService.Notify(message);
     }
 }

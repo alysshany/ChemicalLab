@@ -1,13 +1,15 @@
 ﻿@page "/labWorkerAddingAnalyze"
 @page "/labWorkerAddingAnalyze/{analyzeTitle}"
 @using Data;
+@inject IJSRuntime JS;
 @inject NavigationManager navigation;
 @inject DepositData depositData;
+@inject Radzen.NotificationService NotificationService;
 @inject DefinedIndicatorData definedIndicatorData;
 @inject MethodData methodData;
 @inject CurrentUser currentUser;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Проведение анализа</PageTitle>
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
@@ -48,9 +50,6 @@
             <label style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
                 Метод: @analyze.MethodData
             </label>
-@*            <label style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
-                Норма: 
-            </label>*@
             <label style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
                 Результат: 
             </label>
@@ -96,6 +95,11 @@
 
             DBConnection.ReplaceAnalyze(analyze);
         }
+        else
+        {
+            ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
+            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
+        }
     }
 
     public void NavigationToHomePage()
@@ -111,5 +115,10 @@
     public void NavigationToViewAllApplications()
     {
         navigation.NavigateTo("/labWorkerViewAllApplications");
+    }
+
+    void ShowNotification(Radzen.NotificationMessage message)
+    {
+        NotificationService.Notify(message);
     }
 }

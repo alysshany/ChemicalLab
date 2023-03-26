@@ -1,10 +1,12 @@
 ﻿@page "/adminEditingLabWorker"
 @page "/adminEditingLabWorker/{workerLogin}"
 @using Data;
+@inject IJSRuntime JS;
+@inject Radzen.NotificationService NotificationService;
 @inject CurrentUser CurrentUser
 @inject NavigationManager navigation;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Изменение данных сотрудника</PageTitle>
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
@@ -43,10 +45,8 @@
             <input @bind-value="patronymic" type="text" placeholder="@user.Patronymic" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ; font-size: 20px; background-color: rgb(233, 231, 254);  width: 80%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
 
             <label style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
-                Логин:
+                Логин: @user.Login
             </label>
-            <input @bind-value="login" type="text" placeholder="@user.Login" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ; font-size: 20px; background-color: rgb(233, 231, 254);  width: 80%; mix-blend-mode: normal; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; align-items: inherit; border-radius: 10px">
-
         </div>
 
         <div style="flex: 45%; margin-top: 4%">
@@ -94,7 +94,6 @@
     string? name;
     string? patronymic;
     DateTime? birthday;
-    string? login;
     string? password;
     string? telephone;
     string? email;
@@ -112,14 +111,15 @@
 
     public void ReplacingLabWorker()
     {
-        if (surname != null && name != null && birthday != null && login != null && 
-            password != null && telephone != null && email != null && role != null)
+        if (surname != null && name != null && birthday != null && 
+            password != null && telephone != null && email != null && role != null && role != "-")
         {
             DBConnection.ReplaceUser(user);
         }
         else
         {
-            
+            ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
+            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
         }
     }
 
@@ -131,5 +131,10 @@
     public void NavigationToHomePage()
     {
         navigation.NavigateTo("/admin");
+    }
+
+    void ShowNotification(Radzen.NotificationMessage message)
+    {
+        NotificationService.Notify(message);
     }
 }

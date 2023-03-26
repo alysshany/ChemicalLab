@@ -4,7 +4,7 @@
 @inject CurrentUser currentUser;
 @using Radzen.Blazor;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Домашняя страница заведующего</PageTitle>
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
     <button @onclick="NavigationToAddingNewTask" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px; background-color: rgba(169, 172, 251, 0.7) ;position: absolute; width: 14%; left: 75%; transform: translate(-25%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius: 20px">
@@ -24,16 +24,15 @@
     </button>
     <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; position: absolute; left: 31%; transform: translate(-69%, 160%); opacity: 1; width:25%; height: 280%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
     <div style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; position: absolute; left: 33%; transform: translate(-67%, 175%); width:25%; height: 280%; opacity: 1; mix-blend-mode: normal; background-color: rgba(169, 172, 251, 0.7); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start">
-        
-            <RadzenChart Style="width: 100%; height: 100%">
-            <RadzenDonutSeries Data="@revenue" CategoryProperty="WorkersSurname" ValueProperty="CountOfAnalyze">
-                    <TitleTemplate>
-                        <div class="rz-donut-content">
-                            <div>Анализы</div>
-                        </div>
-                    </TitleTemplate>
-                </RadzenDonutSeries>
-            </RadzenChart>
+        <RadzenChart Style="width: 100%; height: 100%">
+        <RadzenDonutSeries Data="@revenue" CategoryProperty="WorkersSurname" ValueProperty="CountOfAnalyze">
+                <TitleTemplate>
+                    <div class="rz-donut-content">
+                        <div>Анализы</div>
+                    </div>
+                </TitleTemplate>
+            </RadzenDonutSeries>
+        </RadzenChart>
     </div>
     <div style="mix-blend-mode: normal; align-items: inherit; background-image: url('/images/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 50px; height: 75px"></div>
     <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; position: absolute; left: 63%; transform: translate(-37%, 8%); opacity: 1; width:25%; height: 280%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
@@ -65,8 +64,8 @@
 
 @code{
     bool showDataLabels = false;
-    List<UserData> workers;
-    List<DataItem> revenue;
+    List<UserData>? workers;
+    List<DataItem>? revenue;
 
     protected override void OnInitialized()
     {

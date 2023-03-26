@@ -114,7 +114,7 @@ namespace ChemicalLaboratory.Data
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("ChemicalLab");
-            var filter = new BsonDocument("Login", user.Login);
+            var filter = new BsonDocument("_id", user.Id);
             var collection = database.GetCollection<UserData>("CollectionOfUsers");
             collection.ReplaceOne(filter, user);
         }

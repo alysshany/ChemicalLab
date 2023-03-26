@@ -3,13 +3,15 @@ using ChemicalLaboratory.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Hosting;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-//builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
+builder.Services.AddScoped<Radzen.NotificationService>();
+builder.Services.AddScoped<Radzen.DialogService>();
 builder.Services.AddScoped<DBConnection>();
 builder.Services.AddSingleton<DepositData>();
 builder.Services.AddSingleton<DefinedIndicatorData>();
