@@ -12,6 +12,7 @@ namespace ChemicalLaboratory.Data
         public string Deposit { get; set; }
         public string DefinedIndicatorData { get; set; }
         public string MethodData { get; set; }
+        public DateTime? DateOfFinishing { get; set; }
         public UserData? WorkerData { get; set; }
         public string? ResultData { get; set; }
         public bool isFinished = false;

@@ -3,6 +3,7 @@ using ChemicalLaboratory.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Hosting;
+using MudBlazor.Services;
 using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,12 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<Radzen.NotificationService>();
-builder.Services.AddScoped<Radzen.DialogService>();
+builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<DBConnection>();
 builder.Services.AddSingleton<DepositData>();
 builder.Services.AddSingleton<DefinedIndicatorData>();
 builder.Services.AddSingleton<MethodData>();
 builder.Services.AddSingleton<CurrentUser>();
+builder.Services.AddMudServices();
 builder.WebHost.UseStaticWebAssets();
 
 var app = builder.Build();
