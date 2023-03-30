@@ -8,29 +8,29 @@
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
-    <button class="button-27" @onclick="NavigationToHomePage" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;  background-color: rgba(169, 172, 251, 0.7) ;position: absolute; width: 14%; left: 75%; transform: translate(-25%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius: 20px">
-        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <button class="buttonOne" @onclick="NavigationToHomePage">
+        <p class="pStyleOfButton">
             Домашняя страница
         </p>
     </button>
-    <button class="button-27" @onclick="NavigationToViewAllApplications" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;  background-color: rgba(169, 172, 251, 0.7); position: absolute;width: 10%; left: 88%; transform: translate(-12%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:20px">
-        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <button class="buttonTwo" @onclick="NavigationToViewAllApplications">
+        <p class="pStyleOfButton">
             Заявки
         </p>
     </button>
-    <div style="mix-blend-mode: normal; align-items: inherit; background-image: url('/images/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 50px; height: 75px"></div>
-    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;  position: absolute; left: 52%; transform: translate(-48%, 6%); opacity: 1; width:68%; height: 600%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
-    <div style="overflow: auto; box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;  display: flex;position: absolute; left: 50%; transform: translate(-50%, 10%); width:68%; height:600%; opacity: 1; mix-blend-mode: normal; background-color: rgba(169, 172, 251, 0.7); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start">
+    <div class="icon"></div>
+    <div class="boxOne"></div>
+    <div class="boxTwo">
         <div style="flex: 5%;"></div>
         <div style="flex: 90%; margin-top: 4%">
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Наименование</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Тип</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Определяемый показатель</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Месторождение</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Просмотреть</th>
+                        <th class="thStyle">Наименование</th>
+                        <th class="thStyle">Тип</th>
+                        <th class="thStyle">Определяемый показатель</th>
+                        <th class="thStyle">Месторождение</th>
+                        <th class="thStyle">Просмотреть</th>
                     </tr>
         
                 </thead>
@@ -38,13 +38,13 @@
                     @foreach (var analyze in analyzes)
                     {
                         <tr>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">@analyze.Title</td>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">@analyze.Type</td>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">@analyze.DefinedIndicatorData</td>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">@analyze.Deposit</td>
+                            <td class="tdStyle">@analyze.Title</td>
+                            <td class="tdStyle">@analyze.Type</td>
+                            <td class="tdStyle">@analyze.DefinedIndicatorData</td>
+                            <td class="tdStyle">@analyze.Deposit</td>
                             <td align="center">
-                                <button class="button-27" @onclick="() => NavigationToViewingAnalyze(analyze.Title)" style="background-color: rgba(169, 172, 251, 0.7); box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:15px">
-                                    <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 16px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+                                <button class="buttonStyleOfTable" @onclick="() => NavigationToViewingAnalyze(analyze.Title)">
+                                    <p class="pStyleOfTable">
                                         Просмотреть
                                     </p>
                                 </button>
@@ -86,6 +86,162 @@
 }
 
 <style>
+    .boxOne{
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: absolute;
+        left: 52%;
+        transform: translate(-48%, 6%);
+        opacity: 1;
+        width: 68%;
+        height: 600%;
+        mix-blend-mode: normal;
+        background-color: rgba(0, 0, 0, 0.2);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .boxTwo{
+        overflow: auto;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 10%);
+        width: 68%;
+        height: 600%;
+        opacity: 1;
+        mix-blend-mode: normal;
+        background-color: rgba(169, 172, 251, 0.7);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .buttonOne{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 14%;
+        left: 75%;
+        transform: translate(-25%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+    .buttonTwo{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 10%;
+        left: 88%;
+        transform: translate(-12%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+    .icon{
+        mix-blend-mode: normal;
+        align-items: inherit;
+        background-image: url('/images/image3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 75px
+    }
+    .pStyleOfButton{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+    .pStyleOfTable{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+    .buttonStyleOfTable{
+        background-color: rgba(169, 172, 251, 0.7);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 15px
+    }
+    .tdStyle{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+    }
+    .thStyle{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+    }
+
+/*    .buttonOne:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+
+    .buttonTwo:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }*/
+
+    .buttonStyleOfTable:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
     .button-27:hover {
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
         transform: translateY(-2px);

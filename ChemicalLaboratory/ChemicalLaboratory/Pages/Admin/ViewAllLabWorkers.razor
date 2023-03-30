@@ -7,48 +7,48 @@
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
-    <button class="button-27" @onclick="NavigationToHomePage" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;  background-color: rgba(169, 172, 251, 0.7) ;position: absolute; width: 14%; left: 75%; transform: translate(-25%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius: 20px">
-        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <button class="buttonOne" @onclick="NavigationToHomePage">
+        <p class="pStyleOfButton">
             Домашняя страница
         </p>
     </button>
-    <button class="button-27" @onclick="NavigationToAddingWorker" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;  background-color: rgba(169, 172, 251, 0.7); position: absolute;width: 10%; left: 88%; transform: translate(-12%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:20px">
-        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <button class="buttonTwo" @onclick="NavigationToAddingWorker">
+        <p class="pStyleOfButton">
             Сотрудник
         </p>
     </button>
-    <div style="mix-blend-mode: normal; align-items: inherit; background-image: url('/images/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 50px; height: 75px"></div>
-    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; position: absolute; left: 52%; transform: translate(-48%, 6%); opacity: 1; width:68%; height: 600%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
-    <div style="overflow: auto; box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; display: flex;position: absolute; left: 50%; transform: translate(-50%, 10%); width:68%; height:600%; opacity: 1; mix-blend-mode: normal; background-color: rgba(169, 172, 251, 0.7); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start">
+    <div class="icon"></div>
+    <div class="boxOne"></div>
+    <div class="boxTwo">
         <div style="flex: 5%;"></div>
         <div style="flex: 90%; margin-top: 4%">
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Фамилия</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Имя</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Отчество</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400;">Изменение</th>
-                        <th style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400">Удаление</th>
+                        <th class="thStyle">Фамилия</th>
+                        <th class="thStyle">Имя</th>
+                        <th class="thStyle">Отчество</th>
+                        <th class="thStyle">Изменение</th>
+                        <th class="thStyle">Удаление</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var worker in workers)
                     {
                         <tr>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); ">@worker.Surname</td>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1);">@worker.Name</td>
-                            <td style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1);">@worker.Patronymic</td>
+                            <td class="tdStyle">@worker.Surname</td>
+                            <td class="tdStyle">@worker.Name</td>
+                            <td class="tdStyle">@worker.Patronymic</td>
                             <td align="center">
-                                <button class="button-27" @onclick="() => NavigationToEditingWorker(worker.Login)" style="background-color: rgba(169, 172, 251, 0.7); box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:15px">
-                                    <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 16px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+                                <button class="buttonOfTable" @onclick="() => NavigationToEditingWorker(worker.Login)">
+                                    <p class="pStyleOfTable">
                                         Изменить
                                     </p>
                                 </button>
                             </td>
                             <td align="center">
-                                <button class="button-27" @onclick="() => DeletingWorker(worker)" style="background-color: rgba(169, 172, 251, 0.7); box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.5) ; opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:15px">
-                                    <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 16px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+                                <button class="buttonOfTable" @onclick="() => DeletingWorker(worker)">
+                                    <p class="pStyleOfTable">
                                         Удалить
                                     </p>
                                 </button>
@@ -96,6 +96,159 @@
 }
 
 <style>
+    .boxTwo{
+        overflow: auto;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 10%);
+        width: 68%;
+        height: 600%;
+        opacity: 1;
+        mix-blend-mode: normal;
+        background-color: rgba(169, 172, 251, 0.7);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .boxOne{
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: absolute;
+        left: 52%;
+        transform: translate(-48%, 6%);
+        opacity: 1;
+        width: 68%;
+        height: 600%;
+        mix-blend-mode: normal;
+        background-color: rgba(0, 0, 0, 0.2);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .icon{
+        mix-blend-mode: normal;
+        align-items: inherit;
+        background-image: url('/images/image3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 75px
+    }
+    .buttonOne{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 14%;
+        left: 75%;
+        transform: translate(-25%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+    .buttonTwo{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 10%;
+        left: 88%;
+        transform: translate(-12%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+/*    .buttonOne:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+
+    .buttonTwo:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+    .buttonOfTable:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }*/
+    .buttonOfTable{
+        background-color: rgba(169, 172, 251, 0.7);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 15px
+    }
+    .pStyleOfTable{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+    .pStyleOfButton{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+    .tdStyle{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+    }
+    .thStyle{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+    }
     .button-27:hover {
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
         transform: translateY(-2px);

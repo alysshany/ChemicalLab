@@ -30,6 +30,14 @@ namespace ChemicalLaboratory.Data
             collection.InsertOne(task);
         }
 
+        public static void AddEquipmentToDataBase(EquipmentData equipment)
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("ChemicalLab");
+            var collection = database.GetCollection<EquipmentData>("CollectionOfEquipments");
+            collection.InsertOne(equipment);
+        }
+
         public static void AddAnalyzeToDataBase(AnalyzeData analyze)
         {
             var client = new MongoClient("mongodb://localhost:27017");

@@ -7,46 +7,46 @@
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
-    <button class="button-27" @onclick="NavigationToAddingNewLabWorker" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px; background-color: rgba(169, 172, 251, 0.7) ;position: absolute; width: 16%; left: 72%; transform: translate(-28%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius: 20px">
-        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <button class="buttonOne" @onclick="NavigationToAddingNewLabWorker">
+        <p class="pStyleOfButton">
             Добавить сотрудника
         </p>
     </button>
-    <button class="button-27" @onclick="NavigationToViewAllWorkers" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px; background-color: rgba(169, 172, 251, 0.7); position: absolute;width: 10%; left: 88%; transform: translate(-12%, 10%); opacity: 1; mix-blend-mode: normal; padding-left: 10px; padding-right: 10px; padding-top: 10px; align-items: inherit; align-items: flex-start; justify-content: flex-start; border-radius:20px">
-        <p style="letter-spacing: 0; text-transform: none; text-align: center; vertical-align: middle; font-family: Playfair Display; font-size: 20px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <button class="buttonTwo" @onclick="NavigationToViewAllWorkers">
+        <p class="pStyleOfButton">
             Сотрудники
         </p>
     </button>
-    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; position: absolute; left: 31%; transform: translate(-69%, 160%); opacity: 1; width:25%; height: 280%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
-    <div style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; position: absolute; left: 33%; transform: translate(-67%, 175%); width:25%; height: 280%; opacity: 1; mix-blend-mode: normal; background-color: rgba(169, 172, 251, 0.7); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start">
-        <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <div class="boxOne"></div>
+    <div class="boxTwo">
+        <p class="pStyleCompany">
             О компании:
         </p>
     </div>
-    <div style="mix-blend-mode: normal; align-items: inherit; background-image: url('/images/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 50px; height: 75px"></div>
-    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; position: absolute; left: 63%; transform: translate(-37%, 8%); opacity: 1; width:25%; height: 280%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
-    <div style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; position: absolute; left: 61%; transform: translate(-39%, 23%); width:25%; height:280%; opacity: 1; mix-blend-mode: normal; background-color: rgba(169, 172, 251, 0.7); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start">
-        <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+    <div class="logo"></div>
+    <div class="boxThree"></div>
+    <div class="boxFour">
+        <p class="pStyle">
             Фамилия: @currentUser.CurrentUserData.Surname
         </p>
-        <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+        <p class="pStyle">
             Имя: @currentUser.CurrentUserData.Name
         </p>
-        <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+        <p class="pStyle">
             Отчество: @currentUser.CurrentUserData.Patronymic
         </p>
-        <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+        <p class="pStyle">
             Телефон: @currentUser.CurrentUserData.Telephone
         </p>
-        <p style="letter-spacing: 0; text-transform: none; text-align: left; vertical-align: middle; font-family: Playfair Display; font-size: 22px; color: rgba(0, 0, 0, 1); font-weight: 400; width: 100%">
+        <p class="pStyle">
             Почта: @currentUser.CurrentUserData.Email
         </p>
     </div>
-    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;position: absolute; left: 37%; transform: translate(-63%, 25%); opacity: 1; width:28%; height: 280%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
-    <img src='/images/img1.jpg' style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; position: absolute; left: 39%; transform: translate(-61%, 10%); opacity: 1; width:28%; height: 280%; mix-blend-mode: normal; background: src('/images/image5.png') ; background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 20px">
+    <div class="boxFive"></div>
+    <img src='/images/img1.jpg' class="imageOne">
 
-    <div style="box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;position: absolute; left: 57%; transform: translate(-43%, 145%); opacity: 1; width:28%; height: 280%; mix-blend-mode: normal; background-color: rgba(0, 0, 0, 0.2); align-items: inherit; gap: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-radius: 20px; align-items: flex-start; justify-content: flex-start"></div>
-    <img src='/images/img2.jpg' style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; position: absolute; left: 55%; transform: translate(-45%, 130%); opacity: 1; width:28%; height: 280%; mix-blend-mode: normal; background: src('/images/image5.png') ; background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 20px">
+    <div class="boxSix"></div>
+    <img src='/images/img2.jpg' class="imageTwo">
 
 </div>
 
@@ -70,8 +70,240 @@
 }
 
 <style>
-    .button-27:hover {
+    .imageTwo{
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        position: absolute;
+        left: 57%;
+        transform: translate(-43%, 130%);
+        opacity: 1;
+        width: 28%;
+        height: 280%;
+        mix-blend-mode: normal;
+        background: src('/images/image5.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 20px
+    }
+    .imageOne{
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        position: absolute;
+        left: 39%;
+        transform: translate(-61%, 10%);
+        opacity: 1;
+        width: 28%;
+        height: 280%;
+        mix-blend-mode: normal;
+        background: src('/images/image5.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 20px
+    }
+    .boxSix{
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: absolute;
+        left: 59%;
+        transform: translate(-41%, 145%);
+        opacity: 1;
+        width: 28%;
+        height: 280%;
+        mix-blend-mode: normal;
+        background-color: rgba(0, 0, 0, 0.2);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .boxFive{
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: absolute;
+        left: 37%;
+        transform: translate(-63%, 25%);
+        opacity: 1;
+        width: 28%;
+        height: 280%;
+        mix-blend-mode: normal;
+        background-color: rgba(0, 0, 0, 0.2);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .boxFour{
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        position: absolute;
+        left: 63%;
+        transform: translate(-37%, 23%);
+        width: 25%;
+        height: 280%;
+        opacity: 1;
+        mix-blend-mode: normal;
+        background-color: rgba(169, 172, 251, 0.7);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .boxThree{
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: absolute;
+        left: 65%;
+        transform: translate(-35%, 8%);
+        opacity: 1;
+        width: 25%;
+        height: 280%;
+        mix-blend-mode: normal;
+        background-color: rgba(0, 0, 0, 0.2);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .logo{
+        mix-blend-mode: normal;
+        align-items: inherit;
+        background-image: url('/images/image3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 75px
+    }
+    .boxTwo{
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        position: absolute;
+        left: 33%;
+        transform: translate(-67%, 175%);
+        width: 25%;
+        height: 280%;
+        opacity: 1;
+        mix-blend-mode: normal;
+        background-color: rgba(169, 172, 251, 0.7);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .boxOne{
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        position: absolute;
+        left: 31%;
+        transform: translate(-69%, 160%);
+        opacity: 1;
+        width: 25%;
+        height: 280%;
+        mix-blend-mode: normal;
+        background-color: rgba(0, 0, 0, 0.2);
+        align-items: inherit;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        align-items: flex-start;
+        justify-content: flex-start
+    }
+    .pStyleCompany{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: left;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 22px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+    .pStyleOfButton{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+    .buttonTwo{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 10%;
+        left: 88%;
+        transform: translate(-12%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+    .buttonOne{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 16%;
+        left: 72%;
+        transform: translate(-28%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+    .pStyle{
+        letter-spacing: 0;
+        text-transform: none;
+        text-align: left;
+        vertical-align: middle;
+        font-family: Playfair Display;
+        font-size: 22px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        width: 100%
+    }
+/*    .buttonOne:hover {
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
         transform: translateY(-2px);
     }
+
+    .buttonTwo:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }*/
 </style>
