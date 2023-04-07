@@ -6,6 +6,11 @@
 <PageTitle>Домашняя страница лаборанта</PageTitle>
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
+    <button class="buttonThree" @onclick="NavigationToViewAllEquipment">
+        <p class="pStyleOfButton">
+            Оборудование
+        </p>
+    </button>
     <button class="buttonOne" @onclick="NavigationToViewAllApplications">
         <p class="pStyleOfButton">
             Заявки
@@ -90,9 +95,31 @@
     {
         navigation.NavigateTo("/labWorkerViewAnalyzesOfWorker");
     }
+
+    public void NavigationToViewAllEquipment()
+    {
+        navigation.NavigateTo("/labWorkerViewAllEquipment");
+    }
 }
 
 <style>
+    .buttonThree {
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 10%;
+        left: 88%;
+        transform: translate(-12%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
     .imageTwo{
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
         position: absolute;

@@ -38,6 +38,14 @@ namespace ChemicalLaboratory.Data
             collection.InsertOne(equipment);
         }
 
+        public static void DeleteEquipmnetFromDataBase(EquipmentData equipment)
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("ChemicalLab");
+            var collection = database.GetCollection<EquipmentData>("CollectionOfEquipments");
+            var user = collection.DeleteOne(x => x == equipment);
+        }
+
         public static void AddAnalyzeToDataBase(AnalyzeData analyze)
         {
             var client = new MongoClient("mongodb://localhost:27017");
@@ -79,6 +87,15 @@ namespace ChemicalLaboratory.Data
             var database = client.GetDatabase("ChemicalLab");
             var collection = database.GetCollection<UserData>("CollectionOfUsers");
             var list = collection.Find(x => x.RoleName == "Лаборант").ToList();
+            return list;
+        }
+
+        public static List<EquipmentData> ImportAllEquipments()
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("ChemicalLab");
+            var collection = database.GetCollection<EquipmentData>("CollectionOfEquipments");
+            var list = collection.Find(new BsonDocument()).ToList();
             return list;
         }
 

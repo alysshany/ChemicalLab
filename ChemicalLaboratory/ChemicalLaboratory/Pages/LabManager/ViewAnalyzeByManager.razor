@@ -11,9 +11,19 @@
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
-    <button class="buttonOne" @onclick="NavigationToHomePage">
+    <button class="buttonFive" @onclick="NavigationToHomePage">
         <p class="pStyleOfButton">
             Домашняя страница
+        </p>
+    </button>
+    <button class="buttonFour" @onclick="NavigationToAddingNewEquipment">
+        <p class="pStyleOfButton">
+            Добавить оборудование
+        </p>
+    </button>
+    <button class="buttonOne" @onclick="NavigationToAddingNewTask">
+        <p class="pStyleOfButton">
+            Выдать задание
         </p>
     </button>
     <button class="buttonTwo" @onclick="NavigationToAddingNewApplication">
@@ -21,9 +31,9 @@
             Новая заявка
         </p>
     </button>
-    <button class="buttonThree" @onclick="NavigationToAddingNewTask">
+    <button class="buttonThree" @onclick="NavigationToViewAllAnalyzes">
         <p class="pStyleOfButton">
-            Новое задание
+            Пробы
         </p>
     </button>
     <div class="icon"></div>
@@ -81,6 +91,16 @@
     public void NavigationToHomePage()
     {
         navigation.NavigateTo("/labManager");
+    }
+
+    public void NavigationToAddingNewEquipment()
+    {
+        navigation.NavigateTo("/labManagerAddingEquipment");
+    }
+
+    public void NavigationToViewAllAnalyzes()
+    {
+        navigation.NavigateTo("/labManagerViewAnalyzes");
     }
 }
 
@@ -154,6 +174,42 @@
         width: 14%;
         left: 85%;
         transform: translate(-15%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+
+    .buttonFour {
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 18%;
+        left: 46%;
+        transform: translate(-54%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+
+    .buttonFive {
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 14%;
+        left: 30%;
+        transform: translate(-70%, 10%);
         opacity: 1;
         mix-blend-mode: normal;
         padding-left: 10px;

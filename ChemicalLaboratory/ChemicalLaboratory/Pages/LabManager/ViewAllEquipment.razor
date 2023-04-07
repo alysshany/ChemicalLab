@@ -1,14 +1,16 @@
-﻿@page "/labManagerViewAnalyzes"
+﻿@page "/labManagerViewEquipments"
 @using Data;
+@using MongoDB.Bson;
+@inject ISnackbar Snackbar;
 @inject NavigationManager navigation;
 
-<PageTitle>Просмотр всех анализов</PageTitle>
+<PageTitle>Учет оборудования</PageTitle>
 
 
 <div style="opacity: 1; mix-blend-mode: normal; background-color: rgba(255, 255, 255, 1); align-items: inherit; align-items: flex-start; justify-content: flex-start">
-    <button class="buttonFive" @onclick="NavigationToViewEquipment">
+    <button class="buttonFive" @onclick="NavigationToHomePage">
         <p class="pStyleOfButton">
-            Оборудование
+            Домашняя страница
         </p>
     </button>
     <button class="buttonFour" @onclick="NavigationToAddingNewEquipment">
@@ -26,9 +28,9 @@
             Новая заявка
         </p>
     </button>
-    <button class="buttonThree" @onclick="NavigationToHomePage">
+    <button class="buttonThree" @onclick="NavigationToViewAllAnalyzes">
         <p class="pStyleOfButton">
-            Домашняя страница
+            Пробы
         </p>
     </button>
     <div class="icon"></div>
@@ -40,29 +42,48 @@
                 <thead>
                     <tr>
                         <th class="thStyle">Наименование</th>
-                        <th class="thStyle">Тип</th>
-                        <th class="thStyle">Определяемый показатель</th>
-                        <th class="thStyle">Месторождение</th>
-                        <th class="thStyle">Просмотреть</th>
+                        <th class="thStyle">Дата начала эксплуатации</th>
+                        <th class="thStyle">Дата конца эксплуатации</th>
+                        <th class="thStyle">Ответственный</th>
+                        <th class="thStyle">Удалить</th>
                     </tr>
         
                 </thead>
                 <tbody>
-                    @foreach (var analyze in analyzes)
+                    @foreach (var equipment in equipments)
                     {
-                        <tr>
-                            <td class="tdStyle">@analyze.Title</td>
-                            <td class="tdStyle">@analyze.Type</td>
-                            <td class="tdStyle">@analyze.DefinedIndicatorData</td>
-                            <td class="tdStyle">@analyze.Deposit</td>
-                            <td align="center">
-                                <button class="buttonStyleOfTable" @onclick="() => NavigationToViewingAnalyze(analyze.Title)">
-                                    <p class="pStyleOfTable">
-                                        Просмотреть
-                                    </p>
-                                </button>
-                            </td>
-                        </tr>
+                        if (equipment.DateEnd.Subtract(DateTime.Now).Days < 7)
+                        {
+                            <tr style="background-color: rgba(241,169,160)">
+                                <td class="tdStyle">@equipment.Title</td>
+                                <td class="tdStyle">@equipment.DateBegin.Date</td>
+                                <td class="tdStyle">@equipment.DateEnd.Date</td>
+                                <td class="tdStyle">@equipment.User.Surname</td>
+                                <td align="center">
+                                    <button class="buttonStyleOfTable" @onclick="() => DeletingEquipment(equipment)">
+                                        <p class="pStyleOfTable">
+                                            Удалить
+                                        </p>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td class="tdStyle">@equipment.Title</td>
+                                <td class="tdStyle">@equipment.DateBegin</td>
+                                <td class="tdStyle">@equipment.DateEnd</td>
+                                <td class="tdStyle">@equipment.User.Surname</td>
+                                <td align="center">
+@*                                    <button class="buttonStyleOfTable" @onclick="() => NavigationToViewingAnalyze(equipment.Title)">
+                                        <p class="pStyleOfTable">
+                                            Удалить
+                                        </p>
+                                    </button>*@
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>
@@ -76,11 +97,11 @@
 
 
 @code{
-    List<AnalyzeData> analyzes;
+    List<EquipmentData> equipments;
 
     protected override void OnInitialized()
     {
-        analyzes = DBConnection.ImportOnlyAnalyzes();
+        equipments = DBConnection.ImportAllEquipments();
     }
 
     public void NavigationToAddingNewTask()
@@ -93,24 +114,26 @@
         navigation.NavigateTo("/labManagerAddingApplication");
     }
 
-    public void NavigationToAddingNewEquipment()
-    {
-        navigation.NavigateTo("/labManagerAddingEquipment");
-    }
-
     public void NavigationToHomePage()
     {
         navigation.NavigateTo("/labManager");
     }
 
-    public void NavigationToViewEquipment()
+    public void NavigationToAddingNewEquipment()
     {
-        navigation.NavigateTo("/labManagerViewEquipments");
+        navigation.NavigateTo("/labManagerAddingEquipment");
     }
 
-    public void NavigationToViewingAnalyze(string title)
+    public void NavigationToViewAllAnalyzes()
     {
-        navigation.NavigateTo($"/labManagerViewAnalyze/{title}");
+        navigation.NavigateTo("/labManagerViewAnalyzes");
+    }
+
+    public void DeletingEquipment(EquipmentData equipment)
+    {
+        DBConnection.DeleteEquipmnetFromDataBase(equipment);
+        navigation.NavigateTo("/labManagerViewEquipments");
+        Snackbar.Add("Успешно удалено", Severity.Success);
     }
 }
 
@@ -178,23 +201,6 @@
         font-weight: 400;
         width: 100%
     }
-    .buttonThree{
-        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-        background-color: rgba(169, 172, 251, 0.7);
-        position: absolute;
-        width: 14%;
-        left: 85%;
-        transform: translate(-15%, 10%);
-        opacity: 1;
-        mix-blend-mode: normal;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 10px;
-        align-items: inherit;
-        align-items: flex-start;
-        justify-content: flex-start;
-        border-radius: 20px
-    }
 
     .buttonFour {
         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
@@ -221,6 +227,23 @@
         width: 14%;
         left: 28%;
         transform: translate(-72%, 10%);
+        opacity: 1;
+        mix-blend-mode: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        align-items: inherit;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-radius: 20px
+    }
+    .buttonThree{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+        background-color: rgba(169, 172, 251, 0.7);
+        position: absolute;
+        width: 14%;
+        left: 85%;
+        transform: translate(-15%, 10%);
         opacity: 1;
         mix-blend-mode: normal;
         padding-left: 10px;
