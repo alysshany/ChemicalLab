@@ -34,7 +34,7 @@
             Пробы
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 10%;"></div>
@@ -90,6 +90,11 @@
         workers = DBConnection.ImportAllLabWorkers();
     }
 
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
+    }
+
     public void WorkerChange(ChangeEventArgs e)
     {
         if (e.Value is not null)
@@ -117,12 +122,12 @@
             DBConnection.AddEquipmentToDataBase(equipment);
 
             Snackbar.Add("Оборудование добавлено", Severity.Success);
+
+            navigation.NavigateTo("/labManager");
         }
         else
         {
             Snackbar.Add("Не все поля заполнены корректно.", Severity.Error);
-            //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
-            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
         }
     }
 

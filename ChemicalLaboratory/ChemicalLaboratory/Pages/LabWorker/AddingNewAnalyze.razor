@@ -29,7 +29,7 @@
             Пробы
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 10%;"></div>
@@ -79,6 +79,11 @@
         analyze = DBConnection.FindAnalyzeByTitle(analyzeTitle);
     }
 
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
+    }
+
     public void AddingApplication()
     {
         if (result != null)
@@ -91,12 +96,12 @@
             DBConnection.ReplaceAnalyze(analyze);
 
             Snackbar.Add("Анализ был проведен", Severity.Success);
+
+            navigation.NavigateTo("/labWorkerViewAllApplications");
         }
         else
         {
             Snackbar.Add("Не все поля заполнены корректно.", Severity.Error);
-            //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
-            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
         }
     }
 

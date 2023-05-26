@@ -37,7 +37,7 @@
             Пробы
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 10%;"></div>
@@ -113,6 +113,11 @@
 
     }
 
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
+    }
+
     public void AddingApplication()
     {
         if (title != null && indicator != "-" && depositActual != "-" && type != null && indicator != null && method != null && depositActual != null)
@@ -132,19 +137,16 @@
                 DBConnection.AddAnalyzeToDataBase(newApplication);
 
                 Snackbar.Add("Заявка добавлена", Severity.Success);
+                navigation.NavigateTo("/labManager");
             }
             else
             {
                 Snackbar.Add("Заявка на анализ с таким наименованием уже существует.", Severity.Error);
-                //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Заявка на анализ с таким наименованием уже существует.", Duration = 4000 });
-                //JS.InvokeVoidAsync("alert", "Заявка на анализ с таким наименованием уже существует.");
             }
         }
         else
         {
             Snackbar.Add("Не все поля заполнены корректно.", Severity.Error);
-            //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
-            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
         }
     }
 

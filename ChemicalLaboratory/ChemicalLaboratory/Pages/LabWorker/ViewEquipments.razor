@@ -17,7 +17,7 @@
             Пробы
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 5%;"></div>
@@ -107,6 +107,11 @@
         DBConnection.DeleteEquipmnetFromDataBase(equipment);
         navigation.NavigateTo("/labWorkerViewAllEquipment");
         Snackbar.Add("Успешно удалено", Severity.Success);
+    }
+
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
     }
 }
 

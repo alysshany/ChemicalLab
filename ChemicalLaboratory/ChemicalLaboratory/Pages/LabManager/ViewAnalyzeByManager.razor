@@ -36,7 +36,7 @@
             Пробы
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 10%;"></div>
@@ -101,6 +101,11 @@
     public void NavigationToViewAllAnalyzes()
     {
         navigation.NavigateTo("/labManagerViewAnalyzes");
+    }
+
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
     }
 }
 
@@ -190,8 +195,8 @@
         background-color: rgba(169, 172, 251, 0.7);
         position: absolute;
         width: 18%;
-        left: 46%;
-        transform: translate(-54%, 10%);
+        left: 44%;
+        transform: translate(-56%, 10%);
         opacity: 1;
         mix-blend-mode: normal;
         padding-left: 10px;
@@ -208,8 +213,8 @@
         background-color: rgba(169, 172, 251, 0.7);
         position: absolute;
         width: 14%;
-        left: 30%;
-        transform: translate(-70%, 10%);
+        left: 28%;
+        transform: translate(-72%, 10%);
         opacity: 1;
         mix-blend-mode: normal;
         padding-left: 10px;

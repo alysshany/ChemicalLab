@@ -77,15 +77,11 @@
             else
             {
                 Snackbar.Add("Пользователь с такими данными не существует.", Severity.Error);
-                //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Пользователь с такими данными не существует.", Duration = 4000 });
-                //JS.InvokeVoidAsync("alert", "Пользователь с такими данными не существует.");
             }
         }
         else
         {
             Snackbar.Add("Заполните все поля.", Severity.Error);
-            //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Заполните все поля.", Duration = 4000 });
-            //JS.InvokeVoidAsync("alert", "Заполните все поля!");
         }
     }
 

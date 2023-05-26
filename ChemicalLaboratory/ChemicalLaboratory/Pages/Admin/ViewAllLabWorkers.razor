@@ -17,7 +17,7 @@
             Сотрудник
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 5%;"></div>
@@ -92,6 +92,13 @@
     public void DeletingWorker(UserData worker)
     {
         DBConnection.DeleteUserFromDataBase(worker);
+
+        navigation.NavigateTo("/adminViewLabWorker");
+    }
+
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
     }
 }
 

@@ -34,7 +34,7 @@
             Пробы
         </p>
     </button>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 10%;"></div>
@@ -102,18 +102,23 @@
             DBConnection.AddTaskToDataBase(newTask);
 
             Snackbar.Add("Задание добавлено", Severity.Success);
+
+            navigation.NavigateTo("/labManager");
         }
         else
         {
             Snackbar.Add("Не все поля заполнены корректно.", Severity.Error);
-            //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
-            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
         }
     }
 
     public void NavigationToAddingNewApplication()
     {
         navigation.NavigateTo("/labManagerAddingApplication");
+    }
+
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
     }
 
     public void NavigationToHomePage()

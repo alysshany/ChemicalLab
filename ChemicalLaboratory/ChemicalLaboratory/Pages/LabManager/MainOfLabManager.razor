@@ -44,7 +44,7 @@
             </RadzenDonutSeries>
         </RadzenChart>
     </div>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxThree"></div>
     <div class="boxFour">
         <p class="pStyle">
@@ -98,6 +98,11 @@
     public void NavigationToAddingNewTask()
     {
         navigation.NavigateTo("/labManagerAddingTask");
+    }
+
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
     }
 
     public void NavigationToAddingNewEquipment()

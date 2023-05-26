@@ -21,7 +21,7 @@
             Сотрудники
         </p>
     </button>
-    <div class="imageBox"></div>
+    <div class="imageBox" @onclick="NavigationToAuto"></div>
     <div class="boxOne"></div>
     <div class="boxTwo">
         <div style="flex: 10%;"></div>
@@ -69,14 +69,6 @@
             </label>
             <input @bind-value="email" type="text" placeholder="@user.Email" class="inputStyle" />
             
-            <label class="labelStyle">
-                Роль:
-            </label>
-            <select @bind="role" name="role" class="selectStyle">
-                <option value="Администратор">Администратор</option>
-                <option value="Заведующий">Заведующий</option>
-                <option value="Лаборант">Лаборант</option>
-            </select>
         </div>
 
         <button class="buttonThree" @onclick="ReplacingLabWorker">
@@ -95,7 +87,6 @@
     string? password;
     string? telephone;
     string? email;
-    string? role;
 
     UserData user;
 
@@ -110,18 +101,23 @@
     public void ReplacingLabWorker()
     {
         if (surname != null && name != null && birthday != null && 
-            password != null && telephone != null && email != null && role != null && role != "-")
+            password != null && telephone != null && email != null)
         {
             DBConnection.ReplaceUser(user);
 
             Snackbar.Add("Изменения сохранены", Severity.Success);
+
+            navigation.NavigateTo("/adminViewLabWorker");
         }
         else
         {
             Snackbar.Add("Не все поля заполнены корректно.", Severity.Error);
-            //ShowNotification(new Radzen.NotificationMessage { Severity = Radzen.NotificationSeverity.Error, Summary = "Ошибка", Detail = "Не все поля заполнены корректно.", Duration = 4000 });
-            //JS.InvokeVoidAsync("alert", "Не все поля заполнены корректно.");
         }
+    }
+
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
     }
 
     public void NavigationToViewAllWorkers()

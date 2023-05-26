@@ -41,7 +41,7 @@
                 </tbody>
             </table>
     </div>
-    <div class="icon"></div>
+    <div class="icon" @onclick="NavigationToAuto"></div>
     <div class="boxThree"></div>
     <div class="boxFour">
         <p class="pStyle">
@@ -82,7 +82,12 @@
         navigation.NavigateTo("/labWorkerViewAllApplications");
     }
 
-    public void RadioButtonChanged(TaskData task)
+    public void NavigationToAuto()
+    {
+        navigation.NavigateTo("/");
+    }
+
+    public async void RadioButtonChanged(TaskData task)
     {
         task.isDone = !task.isDone;
         DBConnection.ReplaceTask(task);
@@ -107,9 +112,9 @@
         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
         background-color: rgba(169, 172, 251, 0.7);
         position: absolute;
-        width: 10%;
-        left: 88%;
-        transform: translate(-12%, 10%);
+        width: 14%;
+        left: 60%;
+        transform: translate(-40%, 10%);
         opacity: 1;
         mix-blend-mode: normal;
         padding-left: 10px;
